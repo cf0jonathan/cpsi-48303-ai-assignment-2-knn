@@ -3,7 +3,7 @@
 **Course:** FALL 2026 CPSI 48303-01 — Artificial Intelligence  
 **Due:** 10/4/26, 11:59 PM (CDT)  
 **Points:** 100  
-**Submission:** One Python notebook (`.ipynb`)
+**Submission:** One Python notebook (.ipynb)
 
 ---
 
@@ -17,7 +17,7 @@ In Assignment 1, you learned how to:
 - Manually identify features and labels
 - Distinguish features from labels and explain why each column fits its role
 
-Now you will use that data to build your **first AI model**.
+Now you will use that data to build your first AI model.
 
 You will learn how to:
 
@@ -45,7 +45,6 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
-
 ```
 
 **Load the Iris dataset:**
@@ -96,7 +95,12 @@ Create a K-Nearest Neighbors classifier:
 model = KNeighborsClassifier(n_neighbors=3)
 ```
 
-**Answer:** Explain what `KNeighborsClassifier` does and what `n_neighbors=3` means.
+**Answer:**
+
+1. What does KNN stand for?
+2. What do you think a "neighbor" means in this dataset?
+3. What does n_neighbors=3 mean?
+4. Why might an AI system examine similar examples when making a prediction?
 
 ---
 
@@ -108,7 +112,12 @@ Train the model:
 model.fit(X_train, y_train)
 ```
 
-**Answer:** Explain what happens during the `fit()` step.
+**Answer:**
+
+1. What does .fit() do?
+2. Which data are being used for training?
+3. Are X_test and y_test being used during training?
+4. Why should testing data remain separate from training data?
 
 ---
 
@@ -132,7 +141,12 @@ Display the actual answers:
 print(y_test)
 ```
 
-**Answer:** Compare the predictions to the actual values. Are they close?
+**Answer:**
+
+1. What does .predict() do?
+2. Compare the predictions with the actual labels.
+3. Do most predictions appear correct?
+4. Did the model make any incorrect predictions?
 
 ---
 
@@ -146,9 +160,18 @@ accuracy = accuracy_score(y_test, predictions)
 print("Accuracy:", accuracy)
 ```
 
-**Record your result:** My model accuracy: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Record your result:**
 
-**Answer:** What does this accuracy value mean? Is it good?
+```text
+My model accuracy: __________________
+```
+
+**Answer:**
+
+1. What does accuracy measure?
+2. What does an accuracy of 1.0 mean?
+3. What would an accuracy of 0.80 mean?
+4. Does high accuracy automatically mean an AI system is perfect? Explain.
 
 ---
 
@@ -173,7 +196,11 @@ results["Correct"] = results["Actual"] == results["Predicted"]
 print(results)
 ```
 
-**Answer:** How many predictions were correct? Were there any surprising misclassifications?
+**Answer:**
+
+1. Find one correctly classified flower.
+2. Find one incorrectly classified flower, if one exists.
+3. For an incorrect prediction, which species did the model predict instead?
 
 ---
 
@@ -199,7 +226,7 @@ print("Predicted Species:", prediction[0])
 
 **Record:**
 
-```
+```text
 Sepal Length: 5.1
 Sepal Width: 3.5
 Petal Length: 1.4
@@ -208,7 +235,11 @@ Petal Width: 0.2
 Predicted Species: __________________
 ```
 
-**Answer:** Does the prediction make sense compared with the visualizations you created in Assignment 1? Explain.
+**Answer:**
+
+### Does the prediction make sense compared with the visualizations you created in Assignment 1?
+
+Explain.
 
 ---
 
@@ -218,7 +249,7 @@ Create your own three flowers by choosing different measurements.
 
 ### Flower 1
 
-```
+```text
 Sepal Length:
 Sepal Width:
 Petal Length:
@@ -229,7 +260,7 @@ Predicted Species:
 
 ### Flower 2
 
-```
+```text
 Sepal Length:
 Sepal Width:
 Petal Length:
@@ -240,7 +271,7 @@ Predicted Species:
 
 ### Flower 3
 
-```
+```text
 Sepal Length:
 Sepal Width:
 Petal Length:
@@ -249,7 +280,10 @@ Petal Width:
 Predicted Species:
 ```
 
-**Answer:** Are your predictions what you expected based on the scatter plots from Assignment 1?
+**Answer:**
+
+1. Did changing the measurements change the predicted species?
+2. Which measurements seemed to have the greatest influence based on your experiments?
 
 ---
 
@@ -282,22 +316,31 @@ accuracy_1 = accuracy_score(y_test, prediction_1)
 print(accuracy_1)
 ```
 
-Repeat for K = 3, 5, and 10. Complete the table:
+Repeat for K = 3, 5, and 10.
+
+Complete:
 
 | K | Accuracy |
 |---|----------|
 | 1 |          |
 | 3 |          |
 | 5 |          |
-|10 |          |
+| 10 |          |
 
-**Answer:** Which value of K gave the best accuracy? Why might that be?
+**Answer:**
+
+1. Did changing K change the model accuracy?
+2. Which value produced the highest accuracy?
+3. Did multiple K values produce the same accuracy?
+4. Why do you think changing the number of neighbors can influence a prediction?
 
 ---
 
 ## Task 9 — Visualize K vs. Accuracy
 
-Create a graph showing **K vs. Accuracy**.
+Create a graph showing:
+
+**Number of Neighbors vs. Model Accuracy**
 
 Create lists containing your experimental values:
 
@@ -324,21 +367,27 @@ plt.ylabel("Accuracy")
 plt.show()
 ```
 
-**Answer:** Describe the trend you see. Does more neighbors always mean better accuracy?
+**Answer:**
+
+1. Which value of K would you choose based on your experiment?
+2. Why?
+3. How does the graph make comparing models easier than simply reading numbers?
 
 ---
 
 ## Task 10 — Connect KNN to Your Assignment 1 Visualization
 
-Return to the **scatter plot from Assignment 1**.
+Return to the **Petal Length vs. Petal Width** scatter plot from Assignment 1.
 
 Think about how the different species formed groups.
 
 **Answer:**
-- How did the three species separate in the scatter plot?
-- How does KNN decide which species a new flower belongs to?
-- How does looking at nearby points relate to the clusters you saw in Assignment 1?
-- Why might petal length and petal width be more useful for classification than sepal measurements?
+
+1. How does the scatter plot help explain KNN?
+2. If a new flower appears close to several Setosa flowers, what would you expect KNN to predict?
+3. What could happen if a new flower appears near the boundary between Versicolor and Virginica?
+4. Why might increasing K sometimes make predictions more stable?
+5. Why might using a very large K also cause problems?
 
 You are not expected to provide a mathematical explanation. Explain using your understanding of nearby data points.
 
@@ -348,7 +397,7 @@ You are not expected to provide a mathematical explanation. Explain using your u
 
 Your original model uses four features:
 
-```
+```text
 Sepal Length
 Sepal Width
 Petal Length
@@ -357,7 +406,7 @@ Petal Width
 
 Now create another model using only:
 
-```
+```text
 Petal Length
 Petal Width
 ```
@@ -413,7 +462,7 @@ accuracy_2features = accuracy_score(
 print("Two-Feature Accuracy:", accuracy_2features)
 ```
 
-Complete the comparison table:
+Complete:
 
 | Model | Accuracy |
 |---|---|
@@ -421,9 +470,11 @@ Complete the comparison table:
 | Petal Length + Petal Width |  |
 
 **Answer:**
-- How does the two-feature accuracy compare to the four-feature accuracy?
-- Why might using only two features work nearly as well (or exactly as well)?
-- What does this tell you about which measurements matter most for identifying Iris species?
+
+1. Did using only two features increase, decrease, or maintain accuracy?
+2. Do AI models always need every available feature?
+3. Why might petal length and petal width be particularly useful?
+4. How did the visualizations from Assignment 1 help you understand this experiment?
 
 ---
 
@@ -432,24 +483,43 @@ Complete the comparison table:
 Answer the following questions in your own words.
 
 ### Question 1
-What is the difference between `model.fit()` and `model.predict()`?
+
+What is the difference between:
+
+```python
+model.fit()
+```
+
+and:
+
+```python
+model.predict()
+```
+
+?
 
 ### Question 2
+
 What is the difference between training data and testing data?
 
 ### Question 3
+
 What are the features in this AI problem?
 
 ### Question 4
+
 What is the label?
 
 ### Question 5
+
 Why is this a classification problem instead of a regression problem?
 
 ### Question 6
+
 Where does KNN obtain the information it uses to predict the species of a new flower?
 
 ### Question 7
+
 Is KNN the same as manually writing:
 
 ```python
@@ -460,18 +530,23 @@ if petal_length < 2:
 Explain the difference.
 
 ### Question 8
+
 What might happen if many training examples contained incorrect species labels?
 
 ### Question 9
+
 What might happen if the model were trained using only five flowers?
 
 ### Question 10
+
 Why do we evaluate an AI model using data it did not use during training?
 
 ### Question 11
+
 Why can visualization be useful before and after building a machine-learning model?
 
 ### Question 12
+
 What was the most interesting result you observed in your experiments?
 
 ---
@@ -480,7 +555,7 @@ What was the most interesting result you observed in your experiments?
 
 You have now completed:
 
-```
+```text
 Real-World Data
        ↓
 Explore the Data
@@ -512,18 +587,23 @@ Write one sentence explaining what happens at each step.
 
 ## Submission Requirements
 
-Submit one Python notebook (`.ipynb`) containing:
+Submit one Python notebook (.ipynb) containing:
 
-1. All code cells with the code shown in this assignment
-2. Output for every code cell
-3. Explanatory text cells (markdown) for each task
-4. Clear labels for each task and sub-question
-5. All answers to all questions (Tasks 1–12)
-6. Your accuracy comparison table (Task 8)
-7. Your K vs. Accuracy plot (Task 9)
-8. Your feature comparison table (Task 11)
-9. The complete AI workflow explanation
-10. A clean, organized layout that is easy to follow
+1. Dataset loading
+2. Features and labels
+3. Training/testing split
+4. KNN classifier with K = 3
+5. Model training
+6. Model predictions
+7. Accuracy calculation
+8. Actual vs. predicted table
+9. Three new-flower experiments
+10. Experiments using K = 1, 3, 5, and 10
+11. K vs. accuracy table
+12. K vs. accuracy visualization
+13. Two-feature KNN experiment
+14. Comparison of two-feature and four-feature performance
+15. Answers to all questions
 
 Your notebook should run from beginning to end without errors.
 
